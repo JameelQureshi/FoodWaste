@@ -10,6 +10,7 @@ public class ScreenManager : MonoBehaviour
     public GameObject SendEmailPanel;
     public GameObject SendSmsPanel;
     public GameObject ThankyouPanel;
+    public GameObject popUpPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,9 +37,15 @@ public class ScreenManager : MonoBehaviour
         savePanel.SetActive(true);
         SendSmsPanel.SetActive(false);
     }
-    public void submit()
+    
+    public void EmailSubmit()
     {
         SendEmailPanel.SetActive(false);
+        popUpPanel.SetActive(true);
+    }
+    public void submit()
+    {
+        popUpPanel.SetActive(false);
         SendSmsPanel.SetActive(false);
         ThankyouPanel.SetActive(true);
         StartCoroutine(Thankyou());

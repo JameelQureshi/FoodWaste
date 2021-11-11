@@ -1042,6 +1042,7 @@ MonoBehaviour:
   replayCam: {fileID: 1566160175}
   RecImage: {fileID: 367326272}
   videoPlayer: {fileID: 310762584}
+  Quad: {fileID: 310762579}
 --- !u!1 &1015722065
 GameObject:
   m_ObjectHideFlags: 0

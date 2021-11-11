@@ -15,38 +15,29 @@ public class CountDownAnimationEvents : MonoBehaviour
     public ReplayCam replayCam;
     public GameObject RecImage;
     public VideoPlayer videoPlayer;
+    public GameObject Quad;
 
 
     private void Start()
     {
-        
+        Quad.SetActive(false);
     }
-    public void OnFiveGone()
+
+    public void Destroyer(int getindex)
     {
-        Destroy(numbers[4]);
-    }
-    public void OnFourGone()
-    {
-        Destroy(numbers[3]);
-    }
-    public void OnThreeGone()
-    {
-        Destroy(numbers[2]);
-    }
-    public void OnTwoGone()
-    {
-        Destroy(numbers[1]);
+        Destroy(numbers[getindex]);
 
     }
     public void OnOneGone()
     {
         Destroy(numbers[0]);
-        CountDownPanel.GetComponent<Image>().enabled = false;
+        Quad.SetActive(true);
         replayCam.StartRecording();
         videoPlayer.Play();
         RecImage.SetActive(true);
         StartCoroutine(stop());
     }
+
     IEnumerator stop()
     {
         yield return new WaitForSeconds(15.0f);
