@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
+
 
 public class CountDownAnimationEvents : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class CountDownAnimationEvents : MonoBehaviour
     public GameObject CountDownPanel;
     public ReplayCam replayCam;
     public GameObject RecImage;
+    public VideoPlayer videoPlayer;
+
 
     private void Start()
     {
@@ -38,13 +42,15 @@ public class CountDownAnimationEvents : MonoBehaviour
         Destroy(numbers[0]);
         CountDownPanel.GetComponent<Image>().enabled = false;
         replayCam.StartRecording();
+        videoPlayer.Play();
         RecImage.SetActive(true);
         StartCoroutine(stop());
     }
     IEnumerator stop()
     {
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(15.0f);
         RecImage.SetActive(false);
+        videoPlayer.Pause();
         replayCam.StopRecording();
     }
 

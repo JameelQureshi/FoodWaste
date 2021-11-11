@@ -4,7 +4,6 @@ using UnityEngine.Events;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.UI;
-using Siccity.GLTFUtility;
 using System.Collections;
 using UnityEngine.SceneManagement;
 

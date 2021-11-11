@@ -32,9 +32,6 @@ MonoBehaviour:
     - Assembly-CSharp-firstpass
     - Assembly-CSharp
     - NativeShare.Runtime
-    - Siccity.GLTFUtility
-    - Dracodec
-    - Siccity.GLTFUtility.Editor
     - NativeShare.Editor
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
