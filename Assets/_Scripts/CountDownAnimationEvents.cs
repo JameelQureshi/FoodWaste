@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 
 public class CountDownAnimationEvents : MonoBehaviour
@@ -52,6 +53,7 @@ public class CountDownAnimationEvents : MonoBehaviour
         RecImage.SetActive(false);
         videoPlayer.Pause();
         replayCam.StopRecording();
+        SceneManager.LoadScene(2);
     }
 
     

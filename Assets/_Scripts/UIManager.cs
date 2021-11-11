@@ -7,9 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public GameObject StartPanel;
     public GameObject ContinuePanel;
-    public GameObject savePanel;
-    public GameObject SendEmailPanel;
-    public GameObject SendSmsPanel;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -22,22 +20,12 @@ public class UIManager : MonoBehaviour
     }
     public void continuebutton()
     {
-        ContinuePanel.SetActive(false);
-        savePanel.SetActive(true);
+        SceneManager.LoadScene(1);
     }
-    public void SendEmailbutton()
-    {
-        savePanel.SetActive(false);
-        SendEmailPanel.SetActive(true);
-    }
-    public void SendSmSButton()
-    {
-        ContinuePanel.SetActive(false);
-        SendSmsPanel.SetActive(true);
-    }
+    
     public void SubmitButton()
     {
-        SceneManager.LoadScene(1);
+       
     }
     /*  IEnumerator Loading()
       {
