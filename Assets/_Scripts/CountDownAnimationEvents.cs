@@ -17,12 +17,15 @@ public class CountDownAnimationEvents : MonoBehaviour
     public VideoPlayer videoPlayer;
     public GameObject Quad;
 
-
+    private void Awake()
+    {
+        videoPlayer.Prepare();
+    }
     private void Start()
     {
         Quad.SetActive(false);
     }
-
+   
     public void Destroyer(int getindex)
     {
         Destroy(numbers[getindex]);
