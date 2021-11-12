@@ -50,6 +50,10 @@ public class ScreenManager : MonoBehaviour
         ThankyouPanel.SetActive(true);
         StartCoroutine(Thankyou());
     }
+    public void Nothanks()
+    {
+        SceneManager.LoadScene(0);
+    }
     IEnumerator Thankyou()
     {
         yield return new WaitForSeconds(5.0f);
