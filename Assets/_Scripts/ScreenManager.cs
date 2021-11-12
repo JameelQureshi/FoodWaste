@@ -52,7 +52,9 @@ public class ScreenManager : MonoBehaviour
     }
     public void Nothanks()
     {
-        SceneManager.LoadScene(0);
+        savePanel.SetActive(false);
+        ThankyouPanel.SetActive(true);
+        StartCoroutine(Thankyou());
     }
     IEnumerator Thankyou()
     {
