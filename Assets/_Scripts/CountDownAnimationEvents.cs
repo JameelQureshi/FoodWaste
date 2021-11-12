@@ -43,7 +43,7 @@ public class CountDownAnimationEvents : MonoBehaviour
 
     IEnumerator stop()
     {
-        yield return new WaitForSeconds(15.0f);
+        yield return new WaitForSeconds(16.0f);
         RecImage.SetActive(false);
         videoPlayer.Pause();
         replayCam.StopRecording();
