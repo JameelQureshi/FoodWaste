@@ -1525,7 +1525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoWidth: 1440
   videoHeight: 2560
-  recordMicrophone: 1
+  recordMicrophone: 0
   canvas: {fileID: 1265979904}
 --- !u!4 &1566160176
 Transform:
