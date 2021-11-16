@@ -1735,3 +1735,4 @@ Received Import Request.
   path: Assets/AVProVideo/Docs/AVProVideo-UserManual.pdf
   artifactKey: Guid(a84080df68974334fb363786e01f2173) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/AVProVideo/Docs/AVProVideo-UserManual.pdf using Guid(a84080df68974334fb363786e01f2173) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10b26b7ea3dbff83631ca5426544338a') in 0.044505 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
