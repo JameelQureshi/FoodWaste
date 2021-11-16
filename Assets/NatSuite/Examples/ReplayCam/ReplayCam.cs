@@ -67,8 +67,9 @@ namespace NatSuite.Examples {
         public async void StopRecording () {
             cameraInput.Dispose();
             var path = await recorder.FinishWriting();
-            var sharepayload = new SharePayload();
+            var sharepayload = new SavePayload();
             sharepayload.AddMedia(path);
+            
             await sharepayload.Commit();
         }
 
