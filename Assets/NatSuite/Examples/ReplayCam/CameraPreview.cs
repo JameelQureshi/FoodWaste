@@ -20,6 +20,7 @@ namespace NatSuite.Examples.Components
         private AspectRatioFitter aspectFitter;
         private WebCamTexture webCamTexture;
         private WebCamTexture frontcam;
+        string cameraName =  "" ;  
 
         IEnumerator Start()
         {
@@ -42,8 +43,28 @@ namespace NatSuite.Examples.Components
             }
             // Start the WebCamTexture
             
-            { 
-                cameraTexture = new WebCamTexture(null, 1280, 720, 30);
+            {
+
+                WebCamDevice[] devices = WebCamTexture.devices;
+                for (int i = 0; i < devices.Length; i++)
+                {
+                    if (devices[i].isFrontFacing)
+                    {
+                        cameraName = devices[i].name;
+                    }
+                }
+
+                if (cameraName!="")
+                {
+                    cameraTexture = new WebCamTexture(cameraName, 1280, 720, 30);
+                }
+                else
+                {
+                    cameraTexture = new WebCamTexture(null, 1280, 720, 30);
+                }
+                
+
+
                 cameraTexture.Play();
                 yield return new WaitUntil(() => cameraTexture.width != 16 && cameraTexture.height != 16); // Workaround for weird bug on macOS
                                                                                                            // Setup preview shader with correct orientation
