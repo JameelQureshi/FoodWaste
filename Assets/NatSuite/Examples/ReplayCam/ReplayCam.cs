@@ -26,7 +26,7 @@ namespace NatSuite.Examples {
         private AudioInput audioInput;
         private AudioSource microphoneSource;
 
-        public Canvas canvas;
+      
 
         private IEnumerator Start () {
             // Start microphone
@@ -73,43 +73,7 @@ namespace NatSuite.Examples {
             await sharepayload.Commit();
         }
 
-        public void TakeScreenShot()
-        {
-            canvas.enabled = false;
-            Debug.Log("Screen Shot Taken");
-            StartCoroutine(TakeScreenshotAndSave());
-        }
-        private IEnumerator TakeScreenshotAndSave()
-        {
-            yield return new WaitForEndOfFrame();
-
-            Texture2D ss = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
-            ss.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
-            ss.Apply();
-
-            try
-            {
-                //NatShare.Share(ss);
-
-                string filePath = Path.Combine(Application.persistentDataPath, "NFT_" + GalleryHandler.TotalImageInGallery++ + ".png");
-                File.WriteAllBytes(filePath, ss.EncodeToPNG());
-                Debug.Log("Image Saved at: "+filePath);
-                // To avoid memory leaks
-                Destroy(ss);
-                Handheld.Vibrate();
-                //new NativeShare().AddFile(filePath).Share();
-            }
-            catch (Exception e)
-            {
-                print(e);
-            }
-
-            //NatShare.SaveToCameraRoll(ss, "Santa AR");
-            // To avoid memory leaks
-            Destroy(ss);
-            canvas.enabled = true;
-
-   
-        }
+        
+       
     }
 }

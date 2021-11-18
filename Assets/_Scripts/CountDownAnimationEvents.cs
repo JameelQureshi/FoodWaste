@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
-using RenderHeads.Media.AVProVideo;
 
 public class CountDownAnimationEvents : MonoBehaviour
 {
@@ -15,7 +14,6 @@ public class CountDownAnimationEvents : MonoBehaviour
     public ReplayCam replayCam;
     public GameObject RecImage;
     public VideoPlayer videoPlayer;
-    public MediaPlayer mediaPlayer;
     public GameObject Quad;
 
     private void Awake()
@@ -38,9 +36,7 @@ public class CountDownAnimationEvents : MonoBehaviour
         Destroy(numbers[0]);
         Quad.SetActive(true);
         replayCam.StartRecording();
-        // videoPlayer.Play();
-        mediaPlayer.Play();
-      // mediaPlayer.m_AutoStart = true;
+        videoPlayer.Play();
         RecImage.SetActive(true);
         StartCoroutine(stop());
     }
@@ -49,8 +45,7 @@ public class CountDownAnimationEvents : MonoBehaviour
     {
         yield return new WaitForSeconds(16.0f);
         RecImage.SetActive(false);
-       // videoPlayer.Pause();
-        mediaPlayer.Pause();
+        videoPlayer.Pause();
         replayCam.StopRecording();
         SceneManager.LoadScene(2);
     }
