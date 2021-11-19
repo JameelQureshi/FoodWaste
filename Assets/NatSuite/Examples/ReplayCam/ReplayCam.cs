@@ -17,8 +17,8 @@ namespace NatSuite.Examples {
     public class ReplayCam : MonoBehaviour {
 
         [Header("Recording")]
-        public int videoWidth = 1280;
-        public int videoHeight = 720;
+        private int videoWidth;
+        private int videoHeight;
         public bool recordMicrophone;
 
         private IMediaRecorder recorder;

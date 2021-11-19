@@ -16,14 +16,10 @@ public class CountDownAnimationEvents : MonoBehaviour
     public VideoPlayer videoPlayer;
     public GameObject Quad;
 
-    private void Awake()
-    {
-        videoPlayer.Prepare();
-        
-    }
+    
     private void Start()
     {
-        Quad.SetActive(false);
+        videoPlayer.Prepare();
     }
    
     public void Destroyer(int getindex)
@@ -34,8 +30,9 @@ public class CountDownAnimationEvents : MonoBehaviour
     public void OnOneGone()
     {
         Destroy(numbers[0]);
-        Quad.SetActive(true);
+       
         replayCam.StartRecording();
+        Quad.GetComponent<MeshRenderer>().enabled = true;
         videoPlayer.Play();
         RecImage.SetActive(true);
         StartCoroutine(stop());

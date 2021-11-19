@@ -51,17 +51,21 @@ public class ScreenManager : MonoBehaviour
     {
         popUpPanel.SetActive(false);
         SendSmsPanel.SetActive(false);
-        Quad.SetActive(true);
-        VideoPlayer.Play();
+        PlayCharacterAnim();
         StartCoroutine(OnvideoFinished());
         
     }
+    private void PlayCharacterAnim()
+    {
+        Quad.GetComponent<MeshRenderer>().enabled = true;
+        VideoPlayer.Play();
+    }
+
     public void Nothanks()
     {
         savePanel.SetActive(false);
         StartCoroutine(OnvideoFinished());
-        Quad.SetActive(true);
-        VideoPlayer.Play();
+        PlayCharacterAnim();
     }
     IEnumerator Thankyou()
     {
@@ -77,9 +81,5 @@ public class ScreenManager : MonoBehaviour
         StartCoroutine(Thankyou());
 
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
