@@ -53,6 +53,11 @@ public class ScreenManager : MonoBehaviour
         SendEmailPanel.SetActive(false);
         popUpPanel.SetActive(true);
     }
+    public void SmsSubmit()
+    {
+        SendSmsPanel.SetActive(false);
+        popUpPanel.SetActive(true);
+    }
     public void submit()
     {
         popUpPanel.SetActive(false);

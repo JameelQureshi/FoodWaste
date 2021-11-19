@@ -72,10 +72,10 @@ namespace NatSuite.Examples.Components
                 rawImage.material.SetFloat("_Rotation", cameraTexture.videoRotationAngle * Mathf.PI / 180f);
                 rawImage.material.SetFloat("_Scale", cameraTexture.videoVerticallyMirrored ? -1 : 1);
                 // Scale the preview panel
-                if (cameraTexture.videoRotationAngle == 90 || cameraTexture.videoRotationAngle == 270)
-                    aspectFitter.aspectRatio = (float)cameraTexture.height / cameraTexture.width;
-                else
-                    aspectFitter.aspectRatio = (float)cameraTexture.width / cameraTexture.height;
+                //if (cameraTexture.videoRotationAngle == 90 || cameraTexture.videoRotationAngle == 270)
+                  //  aspectFitter.aspectRatio = (float)cameraTexture.height / cameraTexture.width;
+                //else
+                   // aspectFitter.aspectRatio = (float)cameraTexture.width / cameraTexture.height;
             }
         }
     }
