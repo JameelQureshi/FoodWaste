@@ -14,6 +14,10 @@ public class ScreenManager : MonoBehaviour
     public GameObject popUpPanel;
     public VideoPlayer VideoPlayer;
     public GameObject Quad;
+
+    public static bool isEmail;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +29,13 @@ public class ScreenManager : MonoBehaviour
     {
         savePanel.SetActive(false);
         SendEmailPanel.SetActive(true);
+        isEmail = true;
     }
     public void SendSmSButton() 
     {
         savePanel.SetActive(false);
         SendSmsPanel.SetActive(true);
+        isEmail = false;
     }
     public void BackFromEmail()
     {

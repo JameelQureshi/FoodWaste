@@ -12,9 +12,25 @@ public class MessageManager : MonoBehaviour
     public Button EmailSubmit;
     public Button SmsSubmit;
     private int lenghtchecker;
+
+    public UploadManager uploadManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+
+    public void UploadVideo()
+    {
+        if (ScreenManager.isEmail)
+        {
+            uploadManager.Upload(Email.text);
+        }
+        else
+        {
+            uploadManager.Upload(phonenumber.text);
+        }
         
     }
 
@@ -37,5 +53,7 @@ public class MessageManager : MonoBehaviour
             SmsSubmit.interactable = true;
         }
     }
+
+
    
 }

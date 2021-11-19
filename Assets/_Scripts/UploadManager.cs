@@ -7,31 +7,45 @@ using UnityEngine.Networking;
 
 public class UploadManager : MonoBehaviour
 {
+    public GameObject loading;
+    public ScreenManager screenManager;
 
     private void Start()
     {
-        Upload();
-        Debug.Log("Start Function");
+       // Upload();
+        //Debug.Log("Start Function");
     }
 
 
 
-    public void Upload()
+    public void Upload(string targetAddress)
     {
-        StartCoroutine(UploadVideo());
+        loading.SetActive(true);
+        StartCoroutine(UploadVideo(targetAddress));
     }
 
 
 
-    IEnumerator UploadVideo()
+    IEnumerator UploadVideo(string targetAddress)
     {
        
 
         WWWForm form = new WWWForm();
+        string destination = Application.persistentDataPath + "capture" + ".mp4";
         Debug.Log("Uploading");
-        byte[] bytes = File.ReadAllBytes(ReplayCam.path);
-        form.AddField("email", "jameelqureshi2013@gmail.com");
-        form.AddBinaryData("video", bytes, "video"+ ".mp4"); ;
+        byte[] bytes = File.ReadAllBytes(destination);
+
+        if (ScreenManager.isEmail)
+        {
+            form.AddField("email", targetAddress);
+            form.AddBinaryData("video", bytes, "video" + ".mp4"); ;
+        }
+        else
+        {
+            form.AddField("number", targetAddress);
+            form.AddBinaryData("video", bytes, "video" + ".mp4"); ;
+        }
+       
         UnityWebRequest webRequest = UnityWebRequest.Post("https://foodwaste.aimfit.io/api/v1/videos", form);
 
         webRequest.SendWebRequest();
@@ -49,12 +63,15 @@ public class UploadManager : MonoBehaviour
         if (webRequest.isHttpError || webRequest.isNetworkError)
         {
             Debug.Log(webRequest.error);
+            loading.SetActive(false);
+            screenManager.submit();
         }
         else
         {
             Debug.Log("Request Done!:" + webRequest.downloadHandler.text);
             //UploadFileManager.RemoveDoneFileName(fileName);
-
+            loading.SetActive(false);
+            screenManager.submit();
         }
 
 

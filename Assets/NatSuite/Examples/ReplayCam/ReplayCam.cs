@@ -25,7 +25,7 @@ namespace NatSuite.Examples {
         private CameraInput cameraInput;
         private AudioInput audioInput;
         private AudioSource microphoneSource;
-        public static string path;  
+        private string path;  
       
 
         private IEnumerator Start () {
@@ -64,14 +64,28 @@ namespace NatSuite.Examples {
             
         }
 
+        
+
         public async void StopRecording () {
             cameraInput.Dispose();
             path = await recorder.FinishWriting();
 
-            var sharepayload = new SavePayload();
-            sharepayload.AddMedia(path);
+            byte[] bytes = File.ReadAllBytes(path);
+            string destination = Application.persistentDataPath +"capture"+ ".mp4";
+            File.WriteAllBytes(destination, bytes);
+            Debug.Log("Video Saved at: "+destination);
+
+            try
+            {
+                var sharepayload = new SavePayload();
+                sharepayload.AddMedia(path);
+                await sharepayload.Commit();
+            }
+            catch
+            {
+
+            }
             
-            await sharepayload.Commit();
         }
 
         
