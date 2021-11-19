@@ -25,6 +25,7 @@ namespace NatSuite.Examples {
         private CameraInput cameraInput;
         private AudioInput audioInput;
         private AudioSource microphoneSource;
+        public AudioListener audioListener;
         private string path;  
       
 
@@ -61,13 +62,16 @@ namespace NatSuite.Examples {
             recorder = new MP4Recorder(videoWidth, videoHeight, frameRate, sampleRate, channelCount);
             // Create recording inputs
             cameraInput = new CameraInput(recorder, clock, Camera.main);
-            
+            audioInput = new AudioInput(recorder,clock,audioListener);
+
         }
 
         
 
         public async void StopRecording () {
+            audioInput?.Dispose();
             cameraInput.Dispose();
+
             path = await recorder.FinishWriting();
 
             byte[] bytes = File.ReadAllBytes(path);
