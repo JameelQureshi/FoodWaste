@@ -42,8 +42,8 @@ namespace NatSuite.Examples {
 
             // Video Size according to screen
 
-            videoWidth  = Screen.width;
-            videoHeight = Screen.height;
+            videoWidth  = Screen.width/2;
+            videoHeight = Screen.height/2;
 
         }
 

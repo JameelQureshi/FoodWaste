@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     public GameObject ContinuePanel;
 
     // Start is called before the first frame update
-    IEnumerator Start()
+    void Start()
     {
         StartPanel.SetActive(true);
         if (Application.platform == RuntimePlatform.Android)
@@ -18,18 +18,36 @@ public class UIManager : MonoBehaviour
             if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
             {
                 Permission.RequestUserPermission(Permission.Camera);
-                yield return new WaitUntil(() => Permission.HasUserAuthorizedPermission(Permission.Camera));
+            }
+            if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
+            {
+                Permission.RequestUserPermission(Permission.ExternalStorageWrite);
+            }
+            if (!Permission.HasUserAuthorizedPermission(Permission.Microphone))
+            {
+                Permission.RequestUserPermission(Permission.Microphone);
             }
         }
-        else
-        {
-            yield return Application.RequestUserAuthorization(UserAuthorization.WebCam);
-            if (!Application.HasUserAuthorization(UserAuthorization.WebCam))
-                yield break;
-        }
+       
     }
    public void startbutton()
     {
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+            {
+                Permission.RequestUserPermission(Permission.Camera);
+            }
+            if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
+            {
+                Permission.RequestUserPermission(Permission.ExternalStorageWrite);
+            }
+            if (!Permission.HasUserAuthorizedPermission(Permission.Microphone))
+            {
+                Permission.RequestUserPermission(Permission.Microphone);
+            }
+        }
+
         StartPanel.SetActive(false);
         ContinuePanel.SetActive(true);
     }
